@@ -10,15 +10,11 @@ class MockResponse:
 
 
 def test_get_temperature_by_lat_lng(monkeypatch):
-    lat = -14.235004
-    lng = -51.92528
-    expected = 16
 
-    # Pode receber qualquer dado como argumento
     def mockrequest(self):
         return MockResponse()
 
     monkeypatch.setattr(requests, 'get', mockrequest)
-    result = get_temperature(lat, lng)
+    result = get_temperature(None, None)
 
-    assert result == expected
+    assert result == 16
